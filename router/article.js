@@ -1,0 +1,10 @@
+const express =require('express')
+const{add_cate_schema,del_cate_schema,update_cate_schema}=require('../schema/article')
+const expressJoi = require('@escook/express-joi')
+const {getArticleCates,addArticleCates,delArticleCates,updateArticleCates}=require('../router_handler/article')
+const router=express.Router()
+router.get('/list',getArticleCates)
+router.post('/add',expressJoi(add_cate_schema),addArticleCates)
+router.get('/del',expressJoi(del_cate_schema),delArticleCates)
+router.post('/info',expressJoi(update_cate_schema),updateArticleCates)
+module.exports=router
